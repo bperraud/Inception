@@ -10,6 +10,8 @@ COPY ssl/ /etc/nginx/ssl/
 # Expose port 80 and 443
 EXPOSE 80 443
 
+RUN sed -i "s/ssl_protocols.*/ssl_protocols TLSv1.2 TLSv1.3;/" /etc/nginx/nginx.conf
+
 # Start NGINX when the container is run
 CMD ["nginx", "-g", "daemon off;"]
 
