@@ -1,7 +1,6 @@
 # Use the official NGINX image as the base image
 FROM nginx:latest
 
-
 # Copy the index.html file to the default NGINX document root
 COPY index.html /usr/share/nginx/html/index.html
 
@@ -11,8 +10,8 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # Copy SSL Certificates to the appropriate directory
 COPY ssl/ /etc/nginx/ssl/
 
-# Expose port 80 and 443
-EXPOSE 80 443
+# Expose port 443
+EXPOSE 443
 
 RUN sed -i "s/ssl_protocols.*/ssl_protocols TLSv1.2 TLSv1.3;/" /etc/nginx/nginx.conf
 
