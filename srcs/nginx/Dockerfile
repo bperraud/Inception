@@ -1,5 +1,9 @@
 # Use the official NGINX image as the base image
-FROM nginx:latest
+#FROM nginx:latest
+
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y nginx
 
 # Copy the index.html file to the default NGINX document root
 COPY index.html /usr/share/nginx/html/index.html
