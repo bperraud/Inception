@@ -1,6 +1,10 @@
 # Use the official NGINX image as the base image
 FROM nginx:latest
 
+
+# Copy the index.html file to the default NGINX document root
+COPY index.html /usr/share/nginx/html/index.html
+
 # Copy the configuration file to the appropriate directory
 COPY nginx.conf /etc/nginx/nginx.conf
 
