@@ -34,4 +34,4 @@ VOLUME /html
 EXPOSE 9000
 
 # Start the PHP-FPM service
-CMD ["php-fpm7.4"]
+CMD ["php-fpm7.4", "-F"]
