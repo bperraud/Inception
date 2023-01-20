@@ -1,7 +1,4 @@
-# Use the official NGINX image as the base image
-#FROM nginx:latest
-
-FROM ubuntu:latest
+FROM debian:latest
 
 RUN apt-get update && apt-get install -y nginx
 
