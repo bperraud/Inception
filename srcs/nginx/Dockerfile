@@ -18,4 +18,3 @@ RUN sed -i "s/ssl_protocols.*/ssl_protocols TLSv1.2 TLSv1.3;/" /etc/nginx/nginx.
 
 # Start NGINX when the container is run
 CMD ["nginx", "-g", "daemon off;"]
-
