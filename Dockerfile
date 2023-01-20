@@ -4,6 +4,8 @@ FROM debian:latest
 ENV TZ=UTC
 ENV DEBIAN_FRONTEND=noninteractive
 
+#RUN systemctl disable
+
 # Configure the timezone
 RUN echo $TZ > /etc/timezone \
     && apt-get update && apt-get install -y apt-utils  \
@@ -14,17 +16,23 @@ RUN echo $TZ > /etc/timezone \
     && apt-get install -y php-fpm \
     && rm -rf /var/lib/apt/lists/*
 
+# Install necessary packages
+#RUN apt-get update && apt-get install -y php-fpm && rm -rf /var/lib/apt/lists/*
+
 # Download the latest version of WordPress and extract it:
 #RUN wget https://wordpress.org/latest.tar.gz && tar xzvf latest.tar.gz && rm latest.tar.gz
 
 # Configure PHP-FPM
 COPY php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 
+#  give ownership to USER
+#RUN chown -R $USER:$USER /html/
+
 # Remove the directory before copying new files.
 #RUN rm -rf /html/*
 
 # Copy the extracted WordPress files to the web root directory and set the correct permissions:
-COPY tools/wordpress/ /var/www/html/
+RUN cp my_file /etc/
 # \&& chown -R www-data:www-data /var/www/html
 
 # Create a volume for the WordPress files
@@ -35,3 +43,5 @@ EXPOSE 9000
 
 # Start the PHP-FPM service
 CMD ["php-fpm7.4"]
+
+
