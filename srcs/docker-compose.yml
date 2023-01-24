@@ -4,26 +4,36 @@ services:
     build:
       context: requirements/nginx
       dockerfile: Dockerfile
+    #restart : always
+    #volumes:
+    #  - /tools/:/usr/share/html/
     ports:
       - "443:443"
     networks:
       - mynetwork
+
   wordpress:
     build:
       context: requirements/wordpress
       dockerfile: Dockerfile
+    #restart : always
+    volumes:
+      - /tools/:/usr/share/wordpress/
     ports:
       - "9000:9000"
     networks:
       - mynetwork
-  db:
-    image: mariadb
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-    ports:
-      - "3306:3306"
-    networks:
-      - mynetwork
+  #db:
+    #image: mariadb
+    #environment:
+     # MYSQL_ROOT_PASSWORD: password
+    #restart : always
+    #ports:
+    #  - "3306:3306"
+    #networks:
+    #  - mynetwork
 networks:
   mynetwork:
     driver: bridge
+#my_volume:
+  #html:

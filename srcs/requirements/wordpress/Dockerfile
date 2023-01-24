@@ -28,7 +28,7 @@ COPY tools/wordpress/ /var/www/html/
 # \&& chown -R www-data:www-data /var/www/html
 
 # Create a volume for the WordPress files
-VOLUME /html
+#VOLUME /usr/share/html/
 
 # Expose necessary ports
 EXPOSE 9000
