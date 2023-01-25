@@ -19,7 +19,7 @@ services:
       context: requirements/wordpress
       dockerfile: Dockerfile
     #restart : always
-    #working_dir: /usr/share/html/
+    working_dir: /usr/share/html/
     volumes:
       - ./tools:/usr/share/html
     ports:
