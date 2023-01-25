@@ -1,24 +1,27 @@
 version: "3"
 services:
   nginx:
+    container_name: nginx
+    #restart : always
     build:
       context: requirements/nginx
       dockerfile: Dockerfile
-    #restart : always
-    #volumes:
-    #  - /tools/:/usr/share/html/
+    volumes:
+      - ./tools:/usr/share/html
     ports:
       - "443:443"
     networks:
       - mynetwork
 
   wordpress:
+    container_name : wordpress
     build:
       context: requirements/wordpress
       dockerfile: Dockerfile
     #restart : always
+    #working_dir: /usr/share/html/
     volumes:
-      - /tools/:/usr/share/wordpress/
+      - ./tools:/usr/share/html
     ports:
       - "9000:9000"
     networks:
@@ -35,5 +38,5 @@ services:
 networks:
   mynetwork:
     driver: bridge
-#my_volume:
-  #html:
+volumes:
+  tools:

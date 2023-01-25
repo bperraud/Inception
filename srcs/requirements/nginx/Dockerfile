@@ -4,7 +4,6 @@ RUN apt-get update && apt-get install -y nginx
 
 # Copy the index.html file to the default NGINX document root
 COPY index.html /usr/share/html/index.html
-
 COPY index.php /usr/share/html/index.php
 
 # Copy the configuration file to the appropriate directory
