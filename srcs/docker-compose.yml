@@ -26,15 +26,17 @@ services:
       - "9000:9000"
     networks:
       - mynetwork
-  #db:
-    #image: mariadb
-    #environment:
-     # MYSQL_ROOT_PASSWORD: password
-    #restart : always
-    #ports:
-    #  - "3306:3306"
-    #networks:
-    #  - mynetwork
+  mariadb:
+    container_name : mariadb
+    build:
+      context: requirements/mariadb
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    networks:
+      - mynetwork
 networks:
   mynetwork:
     driver: bridge

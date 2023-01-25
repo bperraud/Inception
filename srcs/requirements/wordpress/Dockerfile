@@ -27,9 +27,6 @@ COPY php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 COPY tools/wordpress/ /var/www/html/
 # \&& chown -R www-data:www-data /var/www/html
 
-# Create a volume for the WordPress files
-#VOLUME /usr/share/html/
-
 # Expose necessary ports
 EXPOSE 9000
 
