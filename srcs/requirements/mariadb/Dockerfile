@@ -1,7 +1,5 @@
 FROM debian:latest
 
-
-
 # Install MariaDB package
 RUN apt-get update && \
     apt-get install -y mariadb-server
@@ -9,16 +7,13 @@ RUN apt-get update && \
 # Copy the MariaDB configuration file
 COPY my.cnf /etc/mysql/my.cnf
 
-# Create the MariaDB data directory
-#RUN mkdir /var/lib/mysql
-
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld && chmod 755 /run/mysqld
 
 # Set ownership and permissions for the data directory
-RUN chown -R mysql:mysql /var/lib/mysql && chmod 700 /var/lib/mysql
+RUN chown -R mysql:mysql /var/lib/mysql && chmod 775 /var/lib/mysql
 
 # Create a volume for the MariaDB data directory
-#VOLUME /var/lib/mysql
+VOLUME /var/lib/mysql
 
 # Expose the MariaDB port
 EXPOSE 3306
@@ -27,4 +22,4 @@ EXPOSE 3306
 USER mysql
 
 # Start the MariaDB service
-CMD ["mysqld", "--verbose"]
+CMD ["mysqld"]
