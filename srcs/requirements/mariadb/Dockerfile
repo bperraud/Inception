@@ -21,5 +21,13 @@ EXPOSE 3306
 # Default start as root user, not recommended for security reasons.
 USER mysql
 
+# Make the script executable
+#RUN chmod +x setup_db.sh
+
+# Copy the script inside the container filesystem
+#COPY setup_db.sh /usr/local/bin/
+# Run script that initializes MySQL data directory and creates the system tables
+#ENTRYPOINT ["/usr/local/bin/setup_db.sh"]
+
 # Start the MariaDB service
 CMD ["mysqld"]
