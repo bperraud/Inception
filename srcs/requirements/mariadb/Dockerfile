@@ -7,6 +7,8 @@ RUN apt-get update && \
 # Copy the MariaDB configuration file
 COPY my.cnf /etc/mysql/my.cnf
 
+RUN chmod 775 /etc/mysql/my.cnf
+
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld && chmod 755 /run/mysqld
 
 # Set ownership and permissions for the data directory
@@ -31,4 +33,5 @@ COPY setup_db.sh /usr/local/bin/
 ENTRYPOINT ["/usr/local/bin/setup_db.sh"]
 
 # Start the MariaDB service
-CMD ["mysqld"]
+#CMD ["mysqld", "--bind-address 0.0.0.0", "--init-file init.sql"]
+CMD ["mariadbd"]
