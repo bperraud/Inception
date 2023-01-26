@@ -2,7 +2,7 @@ FROM debian:latest
 
 # Install MariaDB package
 RUN apt-get update && \
-    apt-get install -y mariadb-server
+    apt-get install -y mariadb-server mariadb-client
 
 # Copy the MariaDB configuration file
 COPY my.cnf /etc/mysql/my.cnf
@@ -25,9 +25,10 @@ USER mysql
 #RUN chmod +x setup_db.sh
 
 # Copy the script inside the container filesystem
-#COPY setup_db.sh /usr/local/bin/
+COPY setup_db.sh /usr/local/bin/
+
 # Run script that initializes MySQL data directory and creates the system tables
-#ENTRYPOINT ["/usr/local/bin/setup_db.sh"]
+ENTRYPOINT ["/usr/local/bin/setup_db.sh"]
 
 # Start the MariaDB service
 CMD ["mysqld"]

@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Initialize the MariaDB data directory and create the system tables
-mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
 # Start the MariaDB service
-mysqld &
+mariadbd &
 
 # Wait for MySQL to start
 sleep 5
@@ -18,4 +18,4 @@ mysql -u root -e "CREATE USER 'adminuser'@'localhost' IDENTIFIED BY 'password';"
 mysql -u root -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'adminuser'"
 
 # Stop the MariaDB service
-mysqladmin -u root shutdown
+mariadb-admin -u root shutdown
