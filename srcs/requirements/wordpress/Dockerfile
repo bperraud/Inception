@@ -30,5 +30,8 @@ COPY tools/wordpress/ /var/www/html/
 # Expose necessary ports
 EXPOSE 9000
 
+# install the MySQL extension
+RUN apt-get update && apt-get install -y php-mysql
+
 # Start the PHP-FPM service
 CMD ["php-fpm7.4", "-F"]
