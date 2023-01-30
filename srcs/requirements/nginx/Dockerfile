@@ -7,10 +7,10 @@ RUN apt-get update && apt-get install -y nginx
 #COPY index.php /usr/share/html/index.php
 
 # Copy the configuration file to the appropriate directory
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY tools/nginx.conf /etc/nginx/nginx.conf
 
 # Copy SSL Certificates to the appropriate directory
-COPY ssl/ /etc/nginx/ssl/
+COPY tools/ssl/ /etc/nginx/ssl/
 
 # Expose port 443
 EXPOSE 443
