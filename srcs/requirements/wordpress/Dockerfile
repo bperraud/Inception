@@ -20,7 +20,7 @@ RUN echo $TZ > /etc/timezone \
 # Configure PHP-FPM
 COPY tools/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 
-# Copy the extracted WordPress files to the web root directory and set the correct permissions:
+# Copy the extracted WordPress files to the web root directory :
 COPY tools/wordpress/ /usr/share/html/
 
 # Expose necessary ports

@@ -3,19 +3,15 @@ FROM debian:latest
 # Install MariaDB package
 RUN apt-get update && \
     apt-get upgrade -y && \
-	apt-get install -y mariadb-server mariadb-client
+	apt-get install -y mariadb-server mariadb-client \
+	gettext moreutils
 
-
-RUN rm -rf /var/lib/mysql && mkdir -p /var/lib/mysql
-
-RUN chown -R mysql:mysql /var && chmod 777 /var
-RUN chown -R mysql:mysql /var/lib && chmod 777 /var/lib
-RUN chown -R mysql:mysql /var/lib/mysql && chmod 777 /var/lib/mysql
+#RUN rm -rf /var/lib/mysql && mkdir -p /var/lib/mysql
+#RUN chown -R mysql:mysql /var && chmod 777 /var
+#RUN chown -R mysql:mysql /var/lib && chmod 777 /var/lib
+#RUN chown -R mysql:mysql /var/lib/mysql && chmod 777 /var/lib/mysql
 
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld && chmod 777 /run/mysqld
-
-VOLUME /var/lib/mysql
-
 
 COPY tools/init.sql /tools/
 COPY tools/entrypoint.sh /tools/
