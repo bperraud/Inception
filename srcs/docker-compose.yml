@@ -33,11 +33,11 @@ services:
       dockerfile: Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
-    working_dir: /var/lib/mysql/
+    working_dir: /var/lib/mysql
+    volumes:
+      - ./tools/mariadb:/var/lib/mysql
     #volumes:
-    #  - ./tools/mariadb:/var/lib/mysql/
-    #volumes:
-    #  - ./tools:/var/lib/mysql/
+    #  - ./tools:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
@@ -45,5 +45,5 @@ services:
 networks:
   mynetwork:
     driver: bridge
-#volumes:
-#  tools:
+volumes:
+  tools:
