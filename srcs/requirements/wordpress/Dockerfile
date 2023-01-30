@@ -24,7 +24,8 @@ COPY php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 #RUN rm -rf /html/*
 
 # Copy the extracted WordPress files to the web root directory and set the correct permissions:
-COPY tools/wordpress/ /var/www/html/
+#COPY tools/wordpress/ /var/www/html/
+COPY tools/wordpress/ /usr/share/html/
 # \&& chown -R www-data:www-data /var/www/html
 
 # Expose necessary ports

@@ -7,7 +7,7 @@ services:
       context: requirements/nginx
       dockerfile: Dockerfile
     volumes:
-      - ./tools:/usr/share/html
+      - ./tools/wordpress/:/usr/share/html
     ports:
       - "443:443"
     networks:
@@ -21,7 +21,7 @@ services:
     #restart : always
     working_dir: /usr/share/html/
     volumes:
-      - ./tools:/usr/share/html
+      - ./tools/wordpress/:/usr/share/html
     ports:
       - "9000:9000"
     networks:
@@ -33,8 +33,11 @@ services:
       dockerfile: Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+    working_dir: /var/lib/mysql/
     #volumes:
-    #  - /var/lib/mysql:/var/lib/mysql
+    #  - ./tools/mariadb:/var/lib/mysql/
+    #volumes:
+    #  - ./tools:/var/lib/mysql/
     ports:
       - "3306:3306"
     networks:
