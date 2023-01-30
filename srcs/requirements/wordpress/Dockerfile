@@ -18,15 +18,10 @@ RUN echo $TZ > /etc/timezone \
 #RUN wget https://wordpress.org/latest.tar.gz && tar xzvf latest.tar.gz && rm latest.tar.gz
 
 # Configure PHP-FPM
-COPY php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
-
-# Remove the directory before copying new files.
-#RUN rm -rf /html/*
+COPY tools/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 
 # Copy the extracted WordPress files to the web root directory and set the correct permissions:
-#COPY tools/wordpress/ /var/www/html/
 COPY tools/wordpress/ /usr/share/html/
-# \&& chown -R www-data:www-data /var/www/html
 
 # Expose necessary ports
 EXPOSE 9000
