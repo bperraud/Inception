@@ -11,7 +11,8 @@ RUN echo $TZ > /etc/timezone \
     && rm /etc/localtime \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && dpkg-reconfigure -f noninteractive tzdata \
-    && apt-get install -y php-fpm
+	&& apt-get install -y curl \
+	&& apt-get install -y php-fpm
     #&& rm -rf /var/lib/apt/lists/*
 
 # Download the latest version of WordPress and extract it:
@@ -20,14 +21,21 @@ RUN echo $TZ > /etc/timezone \
 # Configure PHP-FPM
 COPY tools/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 
-# Copy the extracted WordPress files to the web root directory :
-COPY tools/wordpress/ /usr/share/html/
 
 # Expose necessary ports
 EXPOSE 9000
 
 # install the MySQL extension
 RUN apt-get update && apt-get install -y php-mysql
+
+# Copy the extracted WordPress files to the web root directory :
+#COPY tools/wordpress/ /usr/share/html/
+
+COPY tools/wordpress/ /tmp/wordpress
+
+COPY tools/entrypoint.sh /tools/
+
+ENTRYPOINT [ "/tools/entrypoint.sh" ]
 
 # Start the PHP-FPM service
 CMD ["php-fpm7.4", "-F"]
