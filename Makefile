@@ -1,9 +1,10 @@
+all: dir
+	@docker-compose -f ./srcs/docker-compose.yml up
+
 dir:
 	mkdir -p /home/bperraud/data/mariadb
 	mkdir -p /home/bperraud/data/wordpress
 
-all: dir
-	@docker-compose -f ./srcs/docker-compose.yml up
 
 down:
 	@docker-compose -f ./srcs/docker-compose.yml down
