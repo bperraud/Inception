@@ -12,7 +12,8 @@ RUN echo $TZ > /etc/timezone \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && dpkg-reconfigure -f noninteractive tzdata \
 	&& apt-get install -y curl \
-	&& apt-get install -y php-fpm
+	&& apt-get install -y php-fpm \
+	&& apt-get install -y mariadb-client
     #&& rm -rf /var/lib/apt/lists/*
 
 # Download the latest version of WordPress and extract it:
