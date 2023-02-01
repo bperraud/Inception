@@ -4,7 +4,7 @@ FROM debian:latest
 RUN apt-get update && \
     apt-get upgrade -y && \
 	apt-get install -y mariadb-server mariadb-client \
-	gettext moreutils
+	gettext moreutils && rm -rf /var/lib/apt/lists/*
 
 #RUN rm -rf /var/lib/mysql && mkdir -p /var/lib/mysql
 #RUN chown -R mysql:mysql /var && chmod 777 /var
