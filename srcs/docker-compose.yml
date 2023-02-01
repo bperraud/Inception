@@ -7,13 +7,13 @@ services:
       dockerfile: Dockerfile
     #restart : always
     volumes:
-      - /home/bperraud/data/wordpress:/usr/share/html
+      - wp:/usr/share/html
     ports:
       - "443:443"
     networks:
       - mynetwork
-    #depends_on:
-    #  - wordpress
+    depends_on:
+      - wordpress
 
 
   wordpress:
@@ -26,7 +26,7 @@ services:
     #restart : always
     working_dir: /usr/share/html/
     volumes:
-      - /home/bperraud/data/wordpress:/usr/share/html
+      - wp:/usr/share/html
     ports:
       - "9000:9000"
     networks:
@@ -58,7 +58,13 @@ volumes:
       type: none
       o: bind
       device: /home/bperraud/data/mariadb
-
+  wp:
+    name: wp
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/bperraud/data/wordpress
 
 networks:
   mynetwork:
