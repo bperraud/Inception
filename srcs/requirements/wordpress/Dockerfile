@@ -11,8 +11,8 @@ RUN echo $TZ > /etc/timezone \
     && rm /etc/localtime \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && dpkg-reconfigure -f noninteractive tzdata \
-    && apt-get install -y php-fpm \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get install -y php-fpm
+    #&& rm -rf /var/lib/apt/lists/*
 
 # Download the latest version of WordPress and extract it:
 #RUN wget https://wordpress.org/latest.tar.gz && tar xzvf latest.tar.gz && rm latest.tar.gz

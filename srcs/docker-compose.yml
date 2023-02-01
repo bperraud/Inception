@@ -7,13 +7,13 @@ services:
       dockerfile: Dockerfile
     #restart : always
     volumes:
-      - wp:/usr/share/html
+      - /home/bperraud/data/wordpress:/usr/share/html
     ports:
       - "443:443"
     networks:
       - mynetwork
-    depends_on:
-      - wordpress
+    #depends_on:
+    #  - wordpress
 
 
   wordpress:
@@ -26,11 +26,13 @@ services:
     #restart : always
     working_dir: /usr/share/html/
     volumes:
-      - wp:/usr/share/html
+      - /home/bperraud/data/wordpress:/usr/share/html
     ports:
       - "9000:9000"
     networks:
       - mynetwork
+
+
   mariadb:
     container_name : mariadb
     env_file:
@@ -40,8 +42,8 @@ services:
       dockerfile: Dockerfile
     #restart : always
     working_dir: /var/lib/mysql
-    volumes:
-      - db:/var/lib/mysql
+    #volumes:
+    #  - db:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
@@ -49,14 +51,6 @@ services:
 
 
 volumes:
-  wp:
-    name: wp
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/bperraud/data/wordpress
-
   db:
     name: db
     driver: local
