@@ -23,8 +23,6 @@ RUN echo $TZ > /etc/timezone \
 COPY tools/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 
 
-# Expose necessary ports
-EXPOSE 9000
 
 # install the MySQL extension
 RUN apt-get update && apt-get install -y php-mysql
@@ -32,11 +30,14 @@ RUN apt-get update && apt-get install -y php-mysql
 # Copy the extracted WordPress files to the web root directory :
 #COPY tools/wordpress/ /usr/share/html/
 
-COPY tools/wordpress/ /tmp/wordpress
+#COPY tools/wordpress/ /tmp/wordpress
 
-COPY tools/entrypoint.sh /tools/
+COPY tools/config.sh /tools/
 
-ENTRYPOINT [ "/tools/entrypoint.sh" ]
+ENTRYPOINT [ "/tools/config.sh" ]
+
+# Expose necessary ports
+EXPOSE 9000
 
 # Start the PHP-FPM service
 CMD ["php-fpm7.4", "-F"]
