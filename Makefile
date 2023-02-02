@@ -13,8 +13,7 @@ re: dir
 
 clean:
 	docker-compose -f srcs/docker-compose.yml down
-	docker system prune -a --volume
-	docker system prune -a --force
+	docker system prune --volumes
 	sudo rm -rf /home/bperraud/data/
 
 .PHONY: all re down clean
