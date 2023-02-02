@@ -7,6 +7,7 @@ RUN apt-get update && \
 	gettext moreutils && rm -rf /var/lib/apt/lists/*
 
 #RUN rm -rf /var/lib/mysql && mkdir -p /var/lib/mysql
+
 #RUN chown -R mysql:mysql /var && chmod 777 /var
 #RUN chown -R mysql:mysql /var/lib && chmod 777 /var/lib
 #RUN chown -R mysql:mysql /var/lib/mysql && chmod 777 /var/lib/mysql
@@ -18,4 +19,5 @@ COPY tools/entrypoint.sh /tools/
 
 ENTRYPOINT [ "/tools/entrypoint.sh" ]
 
-CMD [ "mysqld", "--bind-address 0.0.0.0", "--init-file /tools/init.sql" ]
+CMD [ "mysqld", "--skip-grant-tables" , "--bind-address 0.0.0.0", "--init-file /tools/init.sql" ]
+

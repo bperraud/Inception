@@ -40,8 +40,8 @@ services:
       dockerfile: Dockerfile
     #restart : always
     working_dir: /var/lib/mysql
-    #volumes:
-    #  - /home/bperraud/data/mariadb:/var/lib/mysql
+    volumes:
+      - /home/bperraud/data/mariadb:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
