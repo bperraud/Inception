@@ -5,7 +5,7 @@ services:
     build:
       context: requirements/nginx
       dockerfile: Dockerfile
-    #restart : always
+    restart : always
     volumes:
       - /home/bperraud/data/wordpress:/usr/share/html
     ports:
@@ -22,7 +22,7 @@ services:
     build:
       context: requirements/wordpress
       dockerfile: Dockerfile
-    #restart : always
+    restart : always
     working_dir: /usr/share/html/
     volumes:
       - /home/bperraud/data/wordpress:/usr/share/html
@@ -38,7 +38,7 @@ services:
     build:
       context: requirements/mariadb
       dockerfile: Dockerfile
-    #restart : always
+    restart : always
     working_dir: /var/lib/mysql
     volumes:
       - /home/bperraud/data/mariadb:/var/lib/mysql
@@ -47,24 +47,6 @@ services:
     networks:
       - mynetwork
 
-
-#volumes:
-#  db:
-#    name: db
-#    driver: local
-#    driver_opts:
-#      type: none
-#      o: bind
-#      device: /home/bperraud/data/mariadb
-#  wp:
-#    name: wp
-#    driver: local
-#    driver_opts:
-#      type: none
-#      o: bind
-#      device: /home/bperraud/data/wordpress
-
 networks:
   mynetwork:
     driver: bridge
-
