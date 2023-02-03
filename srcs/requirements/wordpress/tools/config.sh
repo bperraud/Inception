@@ -17,7 +17,7 @@ if [ ! -f /usr/share/html/wp-config.php ]; then
         --skip-email\
         --allow-root
 	wp user create\
-        $WP_DB_USER $WP_USER_EMAIL\
+        $WP_USER $WP_USER_EMAIL\
         --role=author\
         --user_pass=$WP_USER_PASSWORD\
         --allow-root
