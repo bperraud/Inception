@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     restart : always
     volumes:
-      - /home/bperraud/data/wordpress:/usr/share/html
+      - /home/bperraud/data/wordpress:/var/www/html
     ports:
       - "443:443"
     networks:
@@ -23,9 +23,9 @@ services:
       context: requirements/wordpress
       dockerfile: Dockerfile
     restart : always
-    working_dir: /usr/share/html/
+    working_dir: /var/www/html
     volumes:
-      - /home/bperraud/data/wordpress:/usr/share/html
+      - /home/bperraud/data/wordpress:/var/www/html
     ports:
       - "9000:9000"
     networks:

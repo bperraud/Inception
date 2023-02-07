@@ -6,6 +6,8 @@ RUN apt-get update && \
 	apt-get install -y mariadb-server mariadb-client \
 	gettext moreutils && rm -rf /var/lib/apt/lists/*
 
+#RUN chown -R mysql:mysql /var/lib/mysql && chmod 777 /var/lib/mysql
+
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld && chmod 777 /run/mysqld
 
 COPY tools/init.sql /tools/
