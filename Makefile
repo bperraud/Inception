@@ -3,7 +3,7 @@ all: dir
 
 dir:
 	sudo mkdir -p /home/bperraud/data/mariadb /home/bperraud/data/wordpress
-	chmod 777 /home/bperraud/data/mariadb /home/bperraud/data/wordpress
+	sudo chmod 777 /home/bperraud/data/mariadb /home/bperraud/data/wordpress
 
 down:
 	sudo docker-compose -f ./srcs/docker-compose.yml down
