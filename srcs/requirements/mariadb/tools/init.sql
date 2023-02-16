@@ -1,4 +1,4 @@
-if -u $WP_DB_USER -p $WP_DB_PASSWORD -e "use $WP_DB"; then
+if mysqlshow -u $WP_DB_USER -p $WP_DB_PASSWORD $WP_DB > /dev/null 2>&1;; then
 	CREATE DATABASE $WP_DB;
 	CREATE USER '$WP_DB_USER'@'%' IDENTIFIED BY '$WP_DB_PASSWORD';
 	GRANT ALL PRIVILEGES ON $WP_DB.* TO '$WP_DB_USER'@'%';
