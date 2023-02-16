@@ -4,7 +4,7 @@ envsubst < /tools/init.sql | sponge /tools/init.sql
 
 if [ -d "/var/lib/mysql/mysql" ]; then
 	shift $(( $# - 1 ))
-
+fi
 exec $@
 
 
