@@ -3,14 +3,6 @@
 envsubst < /tools/init.sql | sponge /tools/init.sql
 
 if [ -d "/var/lib/mysql/my_database" ]; then
-	shift $(( $# - 1 ))
+	set -- "${@:1:$(($#-1))}"
 fi
-exec $@
-
-
-#else
-	# Extract all arguments except the last one
-	#args="${@:1:$#-1}"
-	# Execute the command with the extracted arguments
-	#exec $args
-#fi
+exec "$@"
