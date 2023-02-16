@@ -13,5 +13,4 @@ COPY tools/entrypoint.sh /tools/
 
 ENTRYPOINT [ "/tools/entrypoint.sh" ]
 
-#CMD [ "mysqld", "--skip-grant-tables" , "--bind-address 0.0.0.0", "--init-file /tools/init.sql" ]
-CMD [ "mysqld", "--skip-grant-tables" , "--bind-address 0.0.0.0" ]
+CMD [ "mysqld", "--skip-grant-tables" , "--bind-address 0.0.0.0", "--init-file /tools/init.sql" ]
