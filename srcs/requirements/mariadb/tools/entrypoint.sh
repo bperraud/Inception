@@ -8,3 +8,4 @@ else
 	# Extract all arguments except the last one
 	args="${@:1:$#-1}"
 	exec $args
+fi
