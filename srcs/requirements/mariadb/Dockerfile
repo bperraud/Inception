@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:buster
 
 # Install MariaDB package
 RUN apt-get update && \
