@@ -18,3 +18,6 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 sudo apt-get install docker-compose
 sudo usermod -aG docker $USER
 sudo service docker restart
+sudo ufw allow 3306
+sudo ufw allow 9000
+sudo ufw allow 443
